@@ -818,6 +818,53 @@ body{
 /* El UID se puede tocar para copiar (sin cambiar su tamaño ni posición) */
 .ff-uid{-webkit-tap-highlight-color:transparent;}
 
+/* ─── SECCIONES DE LINKS (gaming / redes) ─── */
+.links-group{width:100%;display:flex;flex-direction:column;gap:12px;}
+
+.group-title{
+  font-family:'Syne',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:3.5px;
+  text-transform:uppercase;color:rgba(191,0,255,.5);
+  display:flex;align-items:center;justify-content:center;gap:11px;
+  margin:14px 0 4px;white-space:nowrap;
+  opacity:0;animation:fadeUp .6s forwards;
+}
+.group-title:first-child{margin-top:2px;}
+.group-title::before,.group-title::after{
+  content:'';flex:1;height:1px;
+}
+.group-title::before{background:linear-gradient(90deg,transparent,rgba(191,0,255,.28));}
+.group-title::after{background:linear-gradient(90deg,rgba(191,0,255,.28),transparent);}
+.gt-gaming{animation-delay:.40s;}
+.gt-redes{animation-delay:.86s;color:rgba(255,45,155,.5);}
+.gt-redes::before{background:linear-gradient(90deg,transparent,rgba(255,45,155,.28));}
+.gt-redes::after{background:linear-gradient(90deg,rgba(255,45,155,.28),transparent);}
+
+/* La cascada de entrada sigue de corrido en el segundo grupo */
+.g-redes .li:nth-child(1){animation-delay:.92s;}
+.g-redes .li:nth-child(2){animation-delay:.99s;}
+.g-redes .li:nth-child(3){animation-delay:1.06s;}
+
+/* Sin hueco fantasma cuando el botón de LIVE está oculto */
+.li:has(> .live-btn:not(.show)){display:none;}
+
+/* ─── INSTAGRAM ─── */
+.i-ig{
+  background:linear-gradient(135deg,#1a0016,#43002f);
+  box-shadow:0 0 14px rgba(225,48,108,.3),inset 0 1px 0 rgba(255,255,255,.08);
+}
+.ig-card{border-color:rgba(255,45,155,.16);background:rgba(160,0,90,.07);}
+.ig-card:hover{
+  border-color:rgba(255,45,155,.5)!important;
+  box-shadow:-4px 0 0 #ff0069,0 0 24px rgba(255,45,155,.3),0 8px 32px rgba(0,0,0,.32)!important;
+}
+.ig-card:hover::before{background:linear-gradient(135deg,rgba(255,0,105,.1),rgba(211,0,197,.05))!important;}
+.ig-name{
+  background:linear-gradient(90deg,#ff7a9c,#ff0069 55%,#d300c5);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.ig-arr{border-color:rgba(255,45,155,.25)!important;color:rgba(255,45,155,.5)!important;}
+.ig-card:hover .ig-arr{border-color:#ff0069!important;color:#ff0069!important;box-shadow:0 0 10px rgba(255,0,105,.5)!important;}
+
 </style>
 </head>
 <body>
@@ -1015,6 +1062,10 @@ body{
   <!-- LINKS -->
   <div class="links">
 
+    <!-- ══ SECCIÓN 1: EN VIVO & GAMING ══ -->
+    <div class="group-title gt-gaming">🎮 En vivo · Gaming</div>
+    <div class="links-group">
+
     <!-- LIVE BUTTON -->
     <div class="li">
       <a href="https://www.tiktok.com/@58_chinaff/live" target="_blank" rel="noopener noreferrer" class="link live-btn" id="liveBtn">
@@ -1057,6 +1108,29 @@ body{
       </a>
     </div>
 
+    <!-- KICK -->
+    <div class="li">
+      <a href="https://kick.com/chinaff" target="_blank" rel="noopener noreferrer" class="link kick-card">
+        <div class="icon kick-icon">
+          <svg viewBox="0 0 48 48" fill="none" width="30" height="30">
+            <defs>
+              <linearGradient id="kickGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#7fff00"/><stop offset="1" stop-color="#3a9900"/>
+              </linearGradient>
+            </defs>
+            <rect width="48" height="48" rx="13" fill="url(#kickGrad)" opacity=".15"/>
+            <path d="M10 8h8v12l5-5 6 5 6-12h9L34 24l10 16h-9l-6-12-5 5v7H10V8z" fill="url(#kickGrad)"/>
+          </svg>
+        </div>
+        <div class="lt">
+          <div class="ll" style="color:rgba(100,255,30,.55);letter-spacing:2.5px;">▶ STREAMING EN VIVO</div>
+          <div class="ln kick-name">Kick</div>
+          <div class="ls" style="color:rgba(100,255,30,.35);">kick.com/chinaff · Contenido exclusivo 🟢</div>
+        </div>
+        <div class="arr kick-arr">→</div>
+      </a>
+    </div>
+
     <!-- YOUTUBE -->
     <div class="li">
       <a href="https://www.youtube.com/@china_85" target="_blank" rel="noopener noreferrer" class="link">
@@ -1080,7 +1154,38 @@ body{
       </a>
     </div>
 
-    <div class="divider"></div>
+    </div><!-- /grupo gaming -->
+
+    <!-- ══ SECCIÓN 2: REDES & COMUNIDAD ══ -->
+    <div class="group-title gt-redes">💜 Redes · Comunidad</div>
+    <div class="links-group g-redes">
+
+    <!-- INSTAGRAM -->
+    <div class="li">
+      <a href="https://www.instagram.com/barbara_alfonzo13" target="_blank" rel="noopener noreferrer" class="link ig-card">
+        <div class="icon i-ig">
+          <svg viewBox="0 0 32 32" fill="none">
+            <rect x="3" y="3" width="26" height="26" rx="8" fill="url(#ig1)"/>
+            <rect x="8.6" y="8.6" width="14.8" height="14.8" rx="4.8" stroke="#fff" stroke-width="2"/>
+            <circle cx="16" cy="16" r="3.9" stroke="#fff" stroke-width="2"/>
+            <circle cx="22.3" cy="9.8" r="1.45" fill="#fff"/>
+            <defs>
+              <linearGradient id="ig1" x1="4" y1="28" x2="28" y2="4" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFD600"/><stop offset=".28" stop-color="#FF7A00"/>
+                <stop offset=".55" stop-color="#FF0069"/><stop offset=".78" stop-color="#D300C5"/>
+                <stop offset="1" stop-color="#7638FA"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="lt">
+          <div class="ll">Instagram</div>
+          <div class="ln ig-name">@barbara_alfonzo13</div>
+          <div class="ls">Fotos · Historias · Día a día 💜</div>
+        </div>
+        <div class="arr ig-arr">→</div>
+      </a>
+    </div>
 
     <!-- WHATSAPP -->
     <div class="li">
@@ -1129,30 +1234,7 @@ body{
       </a>
     </div>
 
-
-    <!-- KICK -->
-    <div class="li">
-      <a href="https://kick.com/chinaff" target="_blank" rel="noopener noreferrer" class="link kick-card">
-        <div class="icon kick-icon">
-          <svg viewBox="0 0 48 48" fill="none" width="30" height="30">
-            <defs>
-              <linearGradient id="kickGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#7fff00"/><stop offset="1" stop-color="#3a9900"/>
-              </linearGradient>
-            </defs>
-            <rect width="48" height="48" rx="13" fill="url(#kickGrad)" opacity=".15"/>
-            <path d="M10 8h8v12l5-5 6 5 6-12h9L34 24l10 16h-9l-6-12-5 5v7H10V8z" fill="url(#kickGrad)"/>
-          </svg>
-        </div>
-        <div class="lt">
-          <div class="ll" style="color:rgba(100,255,30,.55);letter-spacing:2.5px;">▶ STREAMING EN VIVO</div>
-          <div class="ln kick-name">Kick</div>
-          <div class="ls" style="color:rgba(100,255,30,.35);">kick.com/chinaff · Contenido exclusivo 🟢</div>
-        </div>
-        <div class="arr kick-arr">→</div>
-      </a>
-    </div>
-
+    </div><!-- /grupo redes -->
 
   </div><!-- /links -->
 
@@ -1224,7 +1306,7 @@ for(let i=0;i<32;i++){
     const zone = edgeZones[i%2]();
     const sz=Math.random()*16+11, dur=Math.random()*7+5, delay=Math.random()*16;
     d.style.cssText=`left:${zone.x}%;top:${zone.y}%;font-size:${sz}px;animation-duration:${dur}s;animation-delay:-${delay}s;`;
-    d.textContent='🐉';
+    d.textContent='🦋';
     field.appendChild(d);
   }
 
